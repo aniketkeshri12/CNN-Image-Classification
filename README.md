@@ -44,7 +44,7 @@ A convolutional neural network (CNN) is a category of machine learning model, na
 The trainA.py and trainB.py script is used to train the CNN using the optimizer class with various options that can be specified using command-line arguments. Here is a description of the available options. The deafult values are set according to what worked best in the wandb sweeps.
 
 
-# PART A : Training from Scratch
+# PART A : CNN model Training from Scratch
 Here I , built a small CNN model consisting of 5 convolution layers. Each convolution layer would be followed by an activation and a max-pooling layer. 
 Then after 5 such conv-activation-maxpool blocks, i have kept one dense layer followed by the output layer containing 10  neurons 
 
@@ -106,6 +106,22 @@ i used following hyper parameters configuration for this:
 
     }
 
+### Training A
+Training is done for this model using Nature_12k Dataset with 20% data as val data. 
+I used Wandb for visualizing runs and then selecting best parameters for the best model after analysis of the runs.
+
+### Functions used 
+- train_load_ : loading data batch wise after transform.
+- transform_datasets_ : will transform data to add noise and all.
+- data_fetch : will fetch data after all the transformation and batch .
+- train : for training using various parameters.
+- main : for calling from wandb to the model.
+
+### Plot
+I plotted 3 x 10 images with their actiual and predicted labels
+
+  
+# PART B : CNN model Training from Scratch
 
 
 
