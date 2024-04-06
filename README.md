@@ -41,28 +41,48 @@ The trainA.py and trainB.py script is used to train the CNN using the optimizer 
 """Train"""
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter) 
+    
     # # Implemented Arg parse to take input of the hyperparameters from the command.
+    
     parser = argparse.ArgumentParser(description="Stores all the hyperpamaters for the model.")
+    
     parser.add_argument("-wp" , '--wandb_project', help='Project name used to track experiments in Weights & Biases dashboard' , type=str, 
     default='Deep_Learning_A2')
+    
     parser.add_argument("-we", "--wandb_entity",type=str, help="Wandb Entity used to track experiments in the Weights & Biases dashboard." , default="cs23m013")
+    
     parser.add_argument("-lg","--logger",type=bool,default=False,choices=[True,False] , help="Log to wandb or not" )
+    
     parser.add_argument('-lr', '--learning_rate', help = 'Learning rate used to optimize model parameters', type=float, default=0.001)
+    
     parser.add_argument("-tsbs","--test_batch_size",type=int,default=16)
+    
     parser.add_argument('-ac', '--activation', help='choices: ["LeakyReLU" ,"Mish", "SiLU", "GELU", "ReLU"]', choices = ["LeakyReLU" ,"Mish", "SiLU", "GELU", 
     "ReLU"],type=str, default='ReLU')
+    
     parser.add_argument("-df", "--dropout_factor", help="Dropout factor" , default=0.3, type=float)
+    
     parser.add_argument("-ff", "--filter_multiplier",default="1", type=float, choices=[1, 0.5, 2])
+    
     parser.add_argument("-nc","--number_of_classes",type=int,default=10)
+    
     parser.add_argument("-ks","--kernel_size",type=int,default=3)
+    
     parser.add_argument("-nf", "--num_filters",default="3", type=int, help="Number of filters in the convolutianal neural network.")
+    
     parser.add_argument("-trbs","--train_batch_size",type=int,default=64)
+    
     parser.add_argument("-vbs","--val_batch_size",type=int,default=16)
+    
     parser.add_argument("-imgs","--image_size",type=int,default=256 , choices=[246,256])
+    
     parser.add_argument("-aug","--apply_data_augmentation",type=bool,default=True , choices=[True,False])
+    
     parser.add_argument('-ep', '--epochs', help="Number of epochs to train neural network.", type=int, default=3)
+    
     parser.add_argument('-trd', '--train_data_directory', help="Dataset", type=str, default='/content/drive/MyDrive/Deeplearning/inaturalist_12K/train/')
+    
     parser.add_argument('-tsd', '--test_data_directory', help="Dataset", type=str, default='/content/drive/MyDrive/Deeplearning/inaturalist_12K/val/')
 
 
