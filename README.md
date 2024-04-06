@@ -34,6 +34,12 @@ A convolutional neural network (CNN) is a category of machine learning model, na
 ### classes involved
 - class initialize_lenet_CNN : initiliaze number of conv layers and max pooling layers.
 
+### Activities
+1. In PART A i tuned the hyperparameters and visual filters on training CNN model from scratch .
+2. I Fine tuned a pre-trained model .
+3. In PART B i used a pre existing model and then validated the val dataset.
+  
+
 ### Training 
 The trainA.py and trainB.py script is used to train the CNN using the optimizer class with various options that can be specified using command-line arguments. Here is a description of the available options. The deafult values are set according to what worked best in the wandb sweeps.
 
