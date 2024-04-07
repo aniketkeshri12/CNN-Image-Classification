@@ -260,7 +260,18 @@ if __name__ == "__main__":
 
     # Parse arguments from command line
     args = parser.parse_args()
+    
+    if args.logger: #log in wandb
+        wandb.init(config=args, project=args.wandb_project, entity=args.wandb_entity, reinit='true')
 
+    # Modify the model's final layer and prepare for training
+    vggnet.classifier[6] = torch.nn.Linear(4096, 10)
+    vggnet.classifier.add_module("7", torch.nn.LogSoftmax(dim=1))
+    vggnet.to(device)
+
+    # Set image size based on arguments
+    image_size = (args.imgSize, args.imgSize)
+    
     # Display parsed arguments
     print("Test Dataset Path:", args.test_data_directory)
     print("Wandb Project:", args.wandb_project)
@@ -272,13 +283,6 @@ if __name__ == "__main__":
     print("Dropout factor:", args.dropout_factor)
     print("Num factor:", args.filter_multiplier)
 
-    # Modify the model's final layer and prepare for training
-    vggnet.classifier[6] = torch.nn.Linear(4096, 10)
-    vggnet.classifier.add_module("7", torch.nn.LogSoftmax(dim=1))
-    vggnet.to(device)
-
-    # Set image size based on arguments
-    image_size = (args.imgSize, args.imgSize)
 
     # Call main function with specified arguments
     main(vggnet, args.learning_rate, args.epochs, args.logger, image_size, args.augment, args.train_data_directory, args.test_data_directory)
