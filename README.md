@@ -1,4 +1,4 @@
-# CS6910_DeepLearning_Assignment_2
+# CNN Image Classification
 
 # Deep Learning Assignment 1: CNN
 
